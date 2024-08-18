@@ -18,17 +18,17 @@ jobs:
       - name: bootJar로 jar 파일 생성
         run: |
           ./gradlew bootJar
-          mv "$(ls -tr build/libs/*.jar | tail -n 1)" ~/zap/spring/zap.jar
+          mv build/libs/*.jar ~/zap/spring/zap.jar
         working-directory: ./backend
 
       - name: 클린업
         if: always()
         run: rm -rf ../2024-code-zap/*
 
-#  deploy:
-#    needs: build
-#    runs-on: Production
-#    steps:
-#      - name: 배포 스크립트 실행
-#        run: |
-#          docker compose restart
+  deploy:
+    needs: build
+    runs-on: Production
+    steps:
+      - name: 배포 스크립트 실행
+        run: |
+          docker compose restart

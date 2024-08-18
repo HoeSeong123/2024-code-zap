@@ -18,7 +18,7 @@ jobs:
       - name: bootJar로 jar 파일 생성
         run: |
           ./gradlew bootJar
-          mv "$(ls -tr build/libs/*.jar | tail -n 1)" ~/download/zap.jar
+          mv "$(ls -tr build/libs/*.jar | tail -n 1)" ~/zap/spring/zap.jar
         working-directory: ./backend
 
       - name: 클린업

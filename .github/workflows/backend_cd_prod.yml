@@ -18,7 +18,7 @@ jobs:
       - name: bootJar로 jar 파일 생성
         run: |
           ./gradlew bootJar
-          mv build/libs/*.jar ~/zap/spring/zap.jar
+          mv build/libs/*.jar ${{ secrets.JAR_DIRECTORY }}
         working-directory: ./backend
 
       - name: 클린업
@@ -31,5 +31,5 @@ jobs:
     steps:
       - name: 배포 스크립트 실행
         run: |
-          cd ~/zap
+          cd ${{ secrets.ZAP_DIRECTORY }}
           docker compose restart

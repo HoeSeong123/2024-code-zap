@@ -31,4 +31,5 @@ jobs:
     steps:
       - name: 배포 스크립트 실행
         run: |
+          cd ~/zap
           docker compose restart

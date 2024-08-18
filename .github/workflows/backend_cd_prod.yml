@@ -31,5 +31,4 @@ jobs:
 #    steps:
 #      - name: 배포 스크립트 실행
 #        run: |
-#          cd ${{ secrets.SCRIPT_DIRECTORY }}
-#          RUNNER_TRACKING_ID="" && bash start.sh ${{ env.ENVIRONMENT }}
+#          docker compose restart

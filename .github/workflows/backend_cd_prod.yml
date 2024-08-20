@@ -4,10 +4,15 @@ on:
   push:
     branches:
       - main
+      - test/cd
 
 jobs:
   build:
-    runs-on: [self-hosted, production, spring]
+    runs-on:
+      - self-hosted
+      - spring
+      - ${{ contains(github.ref, 'main') && 'production' || 'develop' }}
+
     steps:
       - name: 체크아웃
         uses: actions/checkout@v4

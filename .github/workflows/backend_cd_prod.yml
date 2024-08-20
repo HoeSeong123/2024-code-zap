@@ -32,7 +32,10 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: [self-hosted, production, spring]
+    runs-on:
+      - self-hosted
+      - spring
+      - ${{ contains(github.ref, 'main') && 'production' || 'develop' }}
     steps:
       - name: 배포 스크립트 실행
         run: |
